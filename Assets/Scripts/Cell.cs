@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool West, North, South, East;
+    public bool visited;
+
+    public int xPos, zPos;
+
+	public Cell(bool west, bool north, bool east, bool south, bool visited)
+    {
+        this.West = west;
+        this.North = north;
+        this.East = east;
+        this.South = south;
+        this.visited = visited;
+    }
 }
