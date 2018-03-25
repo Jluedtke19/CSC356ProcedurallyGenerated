@@ -17,9 +17,9 @@ public class SpawnManager : MonoBehaviour {
         Debug.Log(sp.Length);
 
 
-Instantiate(player, sp[(Random.Range(0, sp.Length - 1))].gameObject.transform.position, Quaternion.identity);
+GameObject poo = Instantiate(player, sp[(Random.Range(0, sp.Length - 1))].gameObject.transform.position, Quaternion.identity);
 
-
+        poo.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 
     }
 }
