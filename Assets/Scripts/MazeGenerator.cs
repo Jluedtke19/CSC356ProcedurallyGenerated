@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**
+ * https://blackeagleproject.wordpress.com/2015/10/02/tutoriel-n2-partie-1-creation-du-projet-unity-et-creation-du-prefab-necessaire-a-la-generation-du-labyrinthe-2/
+ * The Maze generation scripts were taken from this tutorial and modified based on our requierements
+ * 
+ **/
 public class MazeGenerator : MonoBehaviour {
 
     public int width, height;
@@ -14,6 +20,11 @@ public class MazeGenerator : MonoBehaviour {
     private VisualCell visualCellInst;
 
     private List<CellAndRelativePosition> neighbors;
+
+    public Material cornerMat;
+
+    public GameObject playerSpawner;
+
 
 	void Start () {
         cells = new Cell[width, height];
@@ -33,6 +44,8 @@ public class MazeGenerator : MonoBehaviour {
         }
         RandomCell();
         InitVisualCell();
+
+        InstantiateSpawnersPrefab();
     }
 
     void RandomCell()
@@ -116,4 +129,30 @@ public class MazeGenerator : MonoBehaviour {
             visualCellInst.transform.name = cell.xPos.ToString() + "_" + cell.zPos.ToString();
         }
     }
+
+    void InstantiateSpawnersPrefab() {
+
+        GameObject cornerNW = GameObject.Find("0_0");
+        GameObject cornerNE = GameObject.Find((width-1).ToString()+"_0");
+        GameObject cornerSW = GameObject.Find("0_"+(height-1).ToString());
+        GameObject cornerSE = GameObject.Find((width-1).ToString()+"_"+(height-1).ToString());
+
+
+
+
+        cornerNW.GetComponent<Renderer>().material = cornerMat;
+        cornerNE.GetComponent<Renderer>().material = cornerMat;
+        cornerSW.GetComponent<Renderer>().material = cornerMat;
+        cornerSE.GetComponent<Renderer>().material = cornerMat;
+
+        Instantiate(playerSpawner, new Vector3(cornerNW.transform.position.x, 0, cornerNW.transform.position.z), Quaternion.identity);
+        Instantiate(playerSpawner, new Vector3(cornerNE.transform.position.x, 0, cornerNE.transform.position.z), Quaternion.identity);
+        Instantiate(playerSpawner, new Vector3(cornerSW.transform.position.x, 0, cornerSW.transform.position.z), Quaternion.identity);
+        Instantiate(playerSpawner, new Vector3(cornerSE.transform.position.x, 0, cornerSE.transform.position.z), Quaternion.identity);
+
+        FindObjectOfType<SpawnManager>().FindSpawners();
+        FindObjectOfType<SpawnManager>().InstantiatePlayer();
+
+    }
+
 }
