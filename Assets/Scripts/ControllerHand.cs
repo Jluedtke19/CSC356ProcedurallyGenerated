@@ -8,29 +8,31 @@ public class ControllerHand : MonoBehaviour
     private SteamVR_TrackedObject trackObject;
     private SteamVR_Controller.Device device;
     Rigidbody rg;
+    //Rigidbody rg3po;
     SteamVR_ControllerManager cm;
     Vector3 controllerPos;
     Vector3 controllerPosFinal;
-    GameObject headset;
+   
+
+    movementManager mM;
+
+    //public float movementThreshold=1;
     // Use this for initialization
     void Awake()
     {
         trackObject = GetComponent<SteamVR_TrackedObject>();
-        headset = GameObject.FindGameObjectWithTag("MainCamera");
+        
         cm = FindObjectOfType<SteamVR_ControllerManager>().GetComponent<SteamVR_ControllerManager>();
         rg = GetComponentInParent<Rigidbody>();
+        mM = GetComponentInParent<movementManager>();
+       // rg3po = GetComponent<Rigidbody>();
     }
-    private void Start()
-    {
-        rg.velocity = new Vector3(0, 0, 0);
-        rg.angularVelocity = new Vector3(0, 0, 0);
-        
-    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
         device = SteamVR_Controller.Input((int)trackObject.index);
-        Vector3 poop = headset.transform.forward.normalized;
+        
         /**
          if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip)) {
              // Debug.Log("Running");
@@ -39,10 +41,26 @@ public class ControllerHand : MonoBehaviour
              rg.position += new Vector3(poop.x,poop.y,poop.z)*Time.deltaTime ;
          }
      **/
-        if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
+        /**
+           if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
+           {
+               rg.position += new Vector3(poop.x, 0, poop.z) * Time.deltaTime * 2.5f;
+           }
+       **/
+        /**
+         if (device.velocity.magnitude>2)
+         {
+             mM.speedTime += Time.deltaTime;
+             rg.position += new Vector3(poop.x, 0, poop.z) * Time.deltaTime * 2.5f;
+         }
+     **/
+        if (device.velocity.magnitude > 2)
         {
-            rg.position += new Vector3(poop.x, 0, poop.z) * Time.deltaTime * 2.5f;
+            mM.speedTime += Time.deltaTime*2f;
+            
         }
+        
+
 
         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
         {
@@ -54,6 +72,7 @@ public class ControllerHand : MonoBehaviour
              rg.velocity = new Vector3(0, 0, 0);
             rg.angularVelocity = new Vector3(0, 0, 0);
         }
+        //InertiaStuff();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,4 +83,12 @@ public class ControllerHand : MonoBehaviour
             rg.angularVelocity = new Vector3(0, 0, 0);
         }
     }
+
+
+    void InertiaStuff() {
+
+        Debug.Log(device.velocity);
+
+    }
+
 }
