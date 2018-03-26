@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/SteamVR/Extras/SteamVR_TestIK.unity
+    guid: 4b6669fb4e4df9c48926f02b694be9d1

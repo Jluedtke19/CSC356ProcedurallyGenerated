@@ -24,7 +24,7 @@ public class MazeGenerator : MonoBehaviour {
     public Material cornerMat;
 
     public GameObject playerSpawner;
-
+    public GameObject chestPrefab;
 
 	void Start () {
         cells = new Cell[width, height];
@@ -46,6 +46,7 @@ public class MazeGenerator : MonoBehaviour {
         InitVisualCell();
 
         InstantiateSpawnersPrefab();
+        SpawnChests();
     }
 
     void RandomCell()
@@ -127,6 +128,7 @@ public class MazeGenerator : MonoBehaviour {
             visualCellInst.West.gameObject.SetActive(!cell.West);
 
             visualCellInst.transform.name = cell.xPos.ToString() + "_" + cell.zPos.ToString();
+            //visualCellInst.GetComponent<VisualCell>().RandomizeScale();
         }
     }
 
@@ -154,5 +156,36 @@ public class MazeGenerator : MonoBehaviour {
         FindObjectOfType<SpawnManager>().InstantiatePlayer();
 
     }
+
+
+
+    void SpawnChests() {
+
+        VisualCell[] cells = FindObjectsOfType<VisualCell>();
+
+
+
+        foreach (VisualCell c in cells) {
+            int count = 0;
+            foreach (Transform child in c.transform)
+            {
+                
+                if (child.gameObject.activeInHierarchy) {
+                    count++;
+                }
+
+            }
+            if (count >= 3)
+            {
+                Instantiate(chestPrefab, new Vector3(c.gameObject.transform.position.x, c.gameObject.transform.position.y+ .7f, c.gameObject.transform.position.z), Quaternion.identity);
+                
+            }
+            
+        }
+
+
+    }
+
+
 
 }
