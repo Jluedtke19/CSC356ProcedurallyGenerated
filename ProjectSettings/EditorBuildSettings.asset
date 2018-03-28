@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/SteamVR/Extras/SteamVR_TestIK.unity
-    guid: 4b6669fb4e4df9c48926f02b694be9d1
+  - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 6d3d5d088e5e4f542a58974acd5688b5
+  - enabled: 1
+    path: Assets/MazeGenerationTestOne.unity
+    guid: f053c08e0d061904cb619410b5a18f08
