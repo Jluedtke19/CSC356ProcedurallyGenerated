@@ -16,8 +16,8 @@ public class hipsTransform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3(head.transform.position.x, transform.position.y, head.transform.position.z);
-        transform.rotation =  Quaternion.Euler(head.transform.rotation.x, head.transform.rotation.y, head.transform.rotation.z);
+        transform.position = new Vector3(head.transform.position.x, (head.transform.position.y + rig.transform.position.y) / 2, head.transform.position.z);
+        transform.rotation =  Quaternion.Euler(transform.rotation.x, head.transform.rotation.y, transform.rotation.z);
         //  Debug.Log(transform.position.y + " HIPS");
         //  Debug.Log((head.transform.position.y + rig.transform.position.y) / 2);
         //Debug.Log(transform.localRotation);
