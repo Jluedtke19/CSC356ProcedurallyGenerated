@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandIKTesst2 : MonoBehaviour {
 
-    public  Transform head;
+    public  Transform head1;
 
     
 
@@ -16,7 +16,9 @@ public class HandIKTesst2 : MonoBehaviour {
 
     private void OnAnimatorIK(int layerIndex)
     {
-        //anim.SetLookAtPosition(head.transform.position);
+        Transform head = anim.GetBoneTransform(HumanBodyBones.Head);
+        head.rotation = head1.rotation;
+        head.position = head1.position; 
     }
 
    
