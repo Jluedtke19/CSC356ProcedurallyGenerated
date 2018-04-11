@@ -1,7 +1,7 @@
 ## The Quandering
 This virtual reality project implements a recursive backtracking algorithm to create procedurally generated mazes. The player spawns in one corner of the maze and must find their way to another corner of the maze; but there are several obstacles that will impede their journey.
 
-[Demonstration Video] (link)
+[Demonstration Video] (https://www.youtube.com/watch?v=BzuK4CC3tA0&feature=youtu.be)
 
 This project was completed for a course at Cornell College:
 CSC 356 - Advanced Topics: Virtual Reality
