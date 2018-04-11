@@ -16,7 +16,7 @@ Michael Paquette, Jake Luedtke, Tyler Wians
 #### Sources
 [Maze Generation Algorithm](https://blackeagleproject.wordpress.com/2015/08/25/avant-propos-du-tutoriel-n2-creer-un-generateur-de-labyrinthe-avec-unity-en-c/) by xblackeagle13
 
-[FinalIK] (https://assetstore.unity.com/packages/tools/animation/final-ik-14290) by RootMotion
+[FinalIK](https://assetstore.unity.com/packages/tools/animation/final-ik-14290) by RootMotion
 *This is a paid asset. We are unable to share this source code.*
 
 [Skybox Series Free v4](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633) by AVIONX
