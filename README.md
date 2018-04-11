@@ -6,10 +6,10 @@ Disclaimer: The actual project files are not on this Github because of the maxim
 
 [Demonstration Video](https://www.youtube.com/watch?v=BzuK4CC3tA0&feature=youtu.be)
 
+[Poster from Live Demonstration](https://github.com/Jluedtke19/CSC356ProcedurallyGenerated/blob/master/VRPoster.pdf) *April 10th, 2018*
+
 This project was completed for a course at Cornell College:
 CSC 356 - Advanced Topics: Virtual Reality
-
-[Poster from Live Demonstration](https://github.com/Jluedtke19/CSC356ProcedurallyGenerated/blob/master/VRPoster.pdf) *April 11th, 2018*
 
 Contributors:
 Michael Paquette, Jake Luedtke, Tyler Wians
